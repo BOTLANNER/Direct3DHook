@@ -261,6 +261,11 @@ namespace TestScreenshot
 
         private void btnDisplayOverlay_Click(object sender, EventArgs e)
         {
+            if (_captureProcess?.CaptureInterface == null)
+            {
+                MessageBox.Show("No process has been injected");
+                return;
+            }
             _captureProcess.CaptureInterface.DrawOverlayInGame(new Capture.Hook.Common.Overlay
             {
                 Elements = new List<Capture.Hook.Common.IOverlayElement>
